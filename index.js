@@ -8,12 +8,21 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const app = express();
 const port = process.env.PORT || 5000;
 
-const corsConfig = {
-    origin: true,
-    credentials: true,
-}
-app.use(cors(corsConfig));
-app.options('*', cors(corsConfig));
+// const corsConfig = {
+//     origin: true,
+//     credentials: true,
+// }
+// app.use(cors(corsConfig));
+// app.options('*', cors(corsConfig));
+
+app.use(
+    cors({
+        origin: true,
+        optionsSuccessStatus: 200,
+        credentials: true,
+    })
+);
+
 
 app.use(express.json());
 
